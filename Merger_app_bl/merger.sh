@@ -1,14 +1,14 @@
 #!/bin/bash
 
-
+# Exit immediately on error
 set -e
 
-# Đường dẫn firmware và bootloader
+# Files path
 FIRMWARE="../../build/SpeedyBeeF405WING/bin/arducopter.bin"
 BOOTLOADER="../../build/SpeedyBeeF405WING/bin/AP_Bootloader.bin"
 BOOTLOADER_SIZE_KB=15
 
-# Kiểm tra file tồn tại
+# Check
 if [[ ! -f "$FIRMWARE" ]]; then
   echo "❌ not found firmware: $FIRMWARE"
   exit 1
