@@ -10,15 +10,15 @@ BOOTLOADER_SIZE_KB=15
 
 # Check
 if [[ ! -f "$FIRMWARE" ]]; then
-  echo "❌ not found firmware: $FIRMWARE"
+  echo "Not found firmware: $FIRMWARE"
   exit 1
 fi
 
 if [[ ! -f "$BOOTLOADER" ]]; then
-  echo "❌ not found bootloader: $BOOTLOADER"
+  echo "Not found bootloader: $BOOTLOADER"
   exit 1
 fi
 
 python3 ../../Tools/scripts/make_intel_hex.py "$FIRMWARE" "$BOOTLOADER" "$BOOTLOADER_SIZE_KB"
 
-echo "✅ generated firmware with bootloader."
+echo "Successfully generated firmware with bootloader."
