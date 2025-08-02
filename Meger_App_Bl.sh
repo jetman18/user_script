@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+set -e
+
+# Đường dẫn firmware và bootloader
+FIRMWARE="/home/tuan/ardupilot/build/SpeedyBeeF405WING/bin/arducopter.bin"
+BOOTLOADER="/home/tuan/ardupilot/build/SpeedyBeeF405WING/bin/AP_Bootloader.bin"
+BOOTLOADER_SIZE_KB=15
+
+# Kiểm tra file tồn tại
+if [[ ! -f "$FIRMWARE" ]]; then
+  echo "❌ not found firmware: $FIRMWARE"
+  exit 1
+fi
+
+if [[ ! -f "$BOOTLOADER" ]]; then
+  echo "❌ not found bootloader: $BOOTLOADER"
+  exit 1
+fi
+
+python3 /home/tuan/ardupilot/Tools/scripts/make_intel_hex.py "$FIRMWARE" "$BOOTLOADER" "$BOOTLOADER_SIZE_KB"
+
+echo "✅ generated firmware with bootloader."
